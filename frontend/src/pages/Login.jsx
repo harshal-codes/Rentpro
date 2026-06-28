@@ -54,7 +54,7 @@ export default function Login() {
         <Link to="/" className={styles.backBtn}>← Back to Home</Link>
         <div className={styles.leftContent}>
           <div className={styles.leftLogo}>🏠</div>
-          <h2>Property Dekho</h2>
+          <h2>Rentpro</h2>
           <p>Your complete rental management solution</p>
           <div className={styles.leftFeatures}>
             <div className={styles.leftFeature}><span>✓</span> Manage Properties</div>

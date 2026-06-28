@@ -12,14 +12,14 @@ body {
 }
 
 :root {
-  --primary: #4f46e5;
-  --primary-dark: #3730a3;
-  --primary-light: #818cf8;
-  --secondary: #06b6d4;
+  --primary: #6366f1;
+  --primary-dark: #4f46e5;
+  --primary-light: #a5b4fc;
+  --secondary: #0891b2;
   --success: #10b981;
   --danger: #ef4444;
   --warning: #f59e0b;
-  --bg: #f0f4f8;
+  --bg: #f8fafc;
   --card: #ffffff;
   --border: #e2e8f0;
   --text: #1a202c;

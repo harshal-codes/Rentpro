@@ -9,7 +9,7 @@ export default function Landing() {
       {/* Navbar */}
       <nav className={styles.nav}>
         <div className={styles.logo}>
-          🏠 <span>Property Dekho</span>
+          🏠 <span>Rentpro</span>
         </div>
         <div className={styles.navLinks}>
           <button onClick={() => navigate('/login')} className={styles.loginBtn}>Login</button>
@@ -115,8 +115,8 @@ export default function Landing() {
 
       {/* Footer */}
       <footer className={styles.footer}>
-        <div className={styles.footerLogo}>🏠 Property Dekho</div>
-        <p>© 2024 Property Dekho. Built with ❤️</p>
+        <div className={styles.footerLogo}>🏠 Rentpro</div>
+        <p>© 2024 Rentpro. Built with ❤️</p>
       </footer>
     </div>
   )

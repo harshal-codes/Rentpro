@@ -97,7 +97,7 @@ export default function Signup() {
         <Link to="/" className={styles.backBtn}>← Back to Home</Link>
         <div className={styles.leftContent}>
           <div className={styles.leftLogo}>🏠</div>
-          <h2>Join Property Dekho</h2>
+          <h2>Join Rentpro</h2>
           <p>Start managing your properties today</p>
           <div className={styles.leftFeatures}>
             <div className={styles.leftFeature}><span>✓</span> Free to get started</div>

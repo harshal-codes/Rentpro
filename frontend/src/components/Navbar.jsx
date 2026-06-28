@@ -17,7 +17,7 @@ export default function Navbar({ activeTab, setActiveTab, tabs }) {
   return (
     <nav className={styles.navbar}>
       <div className={styles.left}>
-        <div className={styles.logo}>🏠 <span>Property Dekho</span></div>
+        <div className={styles.logo}>🏠 <span>Rentpro</span></div>
         <div className={styles.tabs}>
           {tabs.map(tab => (
             <button
