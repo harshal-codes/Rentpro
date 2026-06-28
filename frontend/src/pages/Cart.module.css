@@ -1,0 +1,95 @@
+.cartList { display: flex; flex-direction: column; gap: 1.2rem; }
+
+.cartCard {
+  background: white;
+  border-radius: 16px;
+  border: 1px solid #e2e8f0;
+  padding: 1.5rem;
+  display: flex;
+  gap: 2rem;
+  box-shadow: 0 2px 8px rgba(0,0,0,0.06);
+  flex-wrap: wrap;
+  transition: border-color 0.2s;
+}
+.cartCard:hover { border-color: #667eea; }
+
+.cartLeft { display: flex; gap: 1rem; flex: 1; min-width: 220px; }
+.cartIcon { font-size: 2.5rem; padding-top: 0.2rem; }
+
+.cartLeft h3 { font-size: 1rem; font-weight: 700; color: #1a202c; margin-bottom: 0.3rem; }
+.cartLeft p  { font-size: 0.85rem; color: #64748b; margin-bottom: 0.4rem; }
+
+.cartPrice { font-size: 1.2rem; font-weight: 800; color: #4f46e5; }
+.cartPrice span { font-size: 0.78rem; font-weight: 400; color: #94a3b8; }
+.cartDeposit { font-size: 0.8rem; color: #94a3b8; }
+
+.cartRight {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 0.8rem;
+  flex: 1.5;
+  min-width: 280px;
+  align-items: start;
+}
+
+.cartField { display: flex; flex-direction: column; gap: 0.3rem; }
+.cartField label { font-size: 0.78rem; font-weight: 600; color: #64748b; }
+.cartField input {
+  padding: 0.55rem 0.8rem;
+  border: 2px solid #e2e8f0;
+  border-radius: 8px;
+  font-size: 0.88rem;
+  outline: none;
+  transition: border-color 0.2s;
+  width: 100%;
+  font-family: 'Inter', sans-serif;
+}
+.cartField input:focus { border-color: #667eea; }
+
+.cartBtns {
+  grid-column: 1 / -1;
+  display: flex;
+  gap: 0.8rem;
+  margin-top: 0.4rem;
+}
+
+.submitBtn {
+  flex: 1;
+  padding: 0.7rem 1.2rem;
+  background: linear-gradient(135deg, #10b981, #059669);
+  color: white;
+  border: none;
+  border-radius: 10px;
+  font-weight: 700;
+  font-size: 0.9rem;
+  cursor: pointer;
+  transition: all 0.2s;
+}
+.submitBtn:hover:not(:disabled) { transform: translateY(-1px); box-shadow: 0 4px 12px rgba(16,185,129,0.4); }
+.submitBtn:disabled { opacity: 0.6; cursor: not-allowed; }
+
+.removeBtn {
+  padding: 0.7rem 1rem;
+  background: #fef2f2;
+  color: #ef4444;
+  border: 1.5px solid #fecaca;
+  border-radius: 10px;
+  font-weight: 600;
+  font-size: 0.88rem;
+  cursor: pointer;
+  transition: all 0.2s;
+}
+.removeBtn:hover { background: #fee2e2; }
+
+.cartSummary {
+  background: linear-gradient(135deg, #667eea, #764ba2);
+  color: white;
+  border-radius: 16px;
+  padding: 1.5rem 2rem;
+  margin-top: 1.5rem;
+  display: flex;
+  justify-content: space-around;
+  font-size: 1rem;
+  font-weight: 500;
+}
+.cartSummary strong { font-size: 1.2rem; display: block; margin-top: 0.3rem; }

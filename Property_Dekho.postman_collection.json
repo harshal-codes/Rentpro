@@ -1,0 +1,306 @@
+{
+  "info": {
+    "name": "Property Dekho API",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+  },
+  "variable": [
+    { "key": "baseUrl", "value": "https://property-dekho-becho.onrender.com" },
+    { "key": "token",   "value": "" }
+  ],
+  "item": [
+    {
+      "name": "1. Auth",
+      "item": [
+        {
+          "name": "Register Owner",
+          "request": {
+            "method": "POST",
+            "header": [{"key": "Content-Type", "value": "application/json"}],
+            "url": "{{baseUrl}}/users/register",
+            "body": {
+              "mode": "raw",
+              "raw": "{\"name\":\"Test Owner\",\"email\":\"owner@test.com\",\"password\":\"Test@123\",\"role\":\"owner\",\"phone\":\"9876543210\"}"
+            }
+          }
+        },
+        {
+          "name": "Register Tenant",
+          "request": {
+            "method": "POST",
+            "header": [{"key": "Content-Type", "value": "application/json"}],
+            "url": "{{baseUrl}}/users/register",
+            "body": {
+              "mode": "raw",
+              "raw": "{\"name\":\"Test Tenant\",\"email\":\"tenant@test.com\",\"password\":\"Test@123\",\"role\":\"tenant\",\"phone\":\"9123456789\"}"
+            }
+          }
+        },
+        {
+          "name": "Login (saves token)",
+          "event": [
+            {
+              "listen": "test",
+              "script": {
+                "exec": [
+                  "var res = pm.response.json();",
+                  "if(res.access_token) {",
+                  "  pm.collectionVariables.set('token', res.access_token);",
+                  "  console.log('Token saved!');",
+                  "}"
+                ]
+              }
+            }
+          ],
+          "request": {
+            "method": "POST",
+            "header": [{"key": "Content-Type", "value": "application/json"}],
+            "url": "{{baseUrl}}/users/login",
+            "body": {
+              "mode": "raw",
+              "raw": "{\"email\":\"prathameshsurve3785@gmail.com\",\"password\":\"Sonu@3785\"}"
+            }
+          }
+        },
+        {
+          "name": "Get My Profile",
+          "request": {
+            "method": "GET",
+            "header": [{"key": "Authorization", "value": "Bearer {{token}}"}],
+            "url": "{{baseUrl}}/users/me"
+          }
+        }
+      ]
+    },
+    {
+      "name": "2. Properties",
+      "item": [
+        {
+          "name": "Get All Properties (Public)",
+          "request": {
+            "method": "GET",
+            "url": "{{baseUrl}}/properties/all"
+          }
+        },
+        {
+          "name": "Get My Properties (Owner)",
+          "request": {
+            "method": "GET",
+            "header": [{"key": "Authorization", "value": "Bearer {{token}}"}],
+            "url": "{{baseUrl}}/properties/"
+          }
+        },
+        {
+          "name": "Add Property",
+          "request": {
+            "method": "POST",
+            "header": [
+              {"key": "Content-Type", "value": "application/json"},
+              {"key": "Authorization", "value": "Bearer {{token}}"}
+            ],
+            "url": "{{baseUrl}}/properties/",
+            "body": {
+              "mode": "raw",
+              "raw": "{\"title\":\"2BHK Flat\",\"location\":\"Pune, Maharashtra\",\"price\":15000}"
+            }
+          }
+        },
+        {
+          "name": "Archive Property",
+          "request": {
+            "method": "PATCH",
+            "header": [{"key": "Authorization", "value": "Bearer {{token}}"}],
+            "url": "{{baseUrl}}/properties/1/archive"
+          }
+        },
+        {
+          "name": "Delete Property",
+          "request": {
+            "method": "DELETE",
+            "header": [{"key": "Authorization", "value": "Bearer {{token}}"}],
+            "url": "{{baseUrl}}/properties/1"
+          }
+        }
+      ]
+    },
+    {
+      "name": "3. Tenants",
+      "item": [
+        {
+          "name": "Get All Tenants (Debug - No Auth)",
+          "request": {
+            "method": "GET",
+            "url": "{{baseUrl}}/users/all-tenants"
+          }
+        },
+        {
+          "name": "Get My Tenants (Owner)",
+          "request": {
+            "method": "GET",
+            "header": [{"key": "Authorization", "value": "Bearer {{token}}"}],
+            "url": "{{baseUrl}}/tenants/"
+          }
+        },
+        {
+          "name": "Add Tenant (Owner)",
+          "request": {
+            "method": "POST",
+            "header": [
+              {"key": "Content-Type", "value": "application/json"},
+              {"key": "Authorization", "value": "Bearer {{token}}"}
+            ],
+            "url": "{{baseUrl}}/tenants/",
+            "body": {
+              "mode": "raw",
+              "raw": "{\"name\":\"Ayush Sharma\",\"phone\":\"9876543210\",\"email\":\"ayush@gmail.com\",\"property_id\":7}"
+            }
+          }
+        },
+        {
+          "name": "Remove Tenant (Owner)",
+          "request": {
+            "method": "DELETE",
+            "header": [{"key": "Authorization", "value": "Bearer {{token}}"}],
+            "url": "{{baseUrl}}/tenants/6"
+          }
+        },
+        {
+          "name": "Tenant Leave Property",
+          "request": {
+            "method": "POST",
+            "header": [{"key": "Authorization", "value": "Bearer {{token}}"}],
+            "url": "{{baseUrl}}/tenants/leave"
+          }
+        }
+      ]
+    },
+    {
+      "name": "4. Agreements",
+      "item": [
+        {
+          "name": "Get All Agreements (Debug - No Auth)",
+          "request": {
+            "method": "GET",
+            "url": "{{baseUrl}}/users/all-agreements"
+          }
+        },
+        {
+          "name": "Get My Agreements (Owner)",
+          "request": {
+            "method": "GET",
+            "header": [{"key": "Authorization", "value": "Bearer {{token}}"}],
+            "url": "{{baseUrl}}/agreements/"
+          }
+        },
+        {
+          "name": "Get My Agreements (Tenant)",
+          "request": {
+            "method": "GET",
+            "header": [{"key": "Authorization", "value": "Bearer {{token}}"}],
+            "url": "{{baseUrl}}/agreements/my"
+          }
+        }
+      ]
+    },
+    {
+      "name": "5. Rental Requests",
+      "item": [
+        {
+          "name": "Send Rental Request (Tenant)",
+          "request": {
+            "method": "POST",
+            "header": [
+              {"key": "Content-Type", "value": "application/json"},
+              {"key": "Authorization", "value": "Bearer {{token}}"}
+            ],
+            "url": "{{baseUrl}}/requests/",
+            "body": {
+              "mode": "raw",
+              "raw": "{\"property_id\":7,\"phone\":\"9876543210\",\"start_date\":\"2026-07-01\",\"end_date\":\"2027-06-30\",\"message\":\"Interested in renting\"}"
+            }
+          }
+        },
+        {
+          "name": "Get Incoming Requests (Owner)",
+          "request": {
+            "method": "GET",
+            "header": [{"key": "Authorization", "value": "Bearer {{token}}"}],
+            "url": "{{baseUrl}}/requests/incoming"
+          }
+        },
+        {
+          "name": "Accept Request (Owner)",
+          "request": {
+            "method": "POST",
+            "header": [{"key": "Authorization", "value": "Bearer {{token}}"}],
+            "url": "{{baseUrl}}/requests/1/accept"
+          }
+        },
+        {
+          "name": "Reject Request (Owner)",
+          "request": {
+            "method": "POST",
+            "header": [{"key": "Authorization", "value": "Bearer {{token}}"}],
+            "url": "{{baseUrl}}/requests/1/reject"
+          }
+        },
+        {
+          "name": "Tenant Approve Agreement",
+          "request": {
+            "method": "POST",
+            "header": [{"key": "Authorization", "value": "Bearer {{token}}"}],
+            "url": "{{baseUrl}}/requests/agreements/4/tenant-approve"
+          }
+        },
+        {
+          "name": "Owner Approve Agreement",
+          "request": {
+            "method": "POST",
+            "header": [{"key": "Authorization", "value": "Bearer {{token}}"}],
+            "url": "{{baseUrl}}/requests/agreements/4/owner-approve"
+          }
+        }
+      ]
+    },
+    {
+      "name": "6. Payments",
+      "item": [
+        {
+          "name": "Get My Payments (Owner)",
+          "request": {
+            "method": "GET",
+            "header": [{"key": "Authorization", "value": "Bearer {{token}}"}],
+            "url": "{{baseUrl}}/payments/"
+          }
+        },
+        {
+          "name": "Record Payment (Owner)",
+          "request": {
+            "method": "POST",
+            "header": [
+              {"key": "Content-Type", "value": "application/json"},
+              {"key": "Authorization", "value": "Bearer {{token}}"}
+            ],
+            "url": "{{baseUrl}}/payments/",
+            "body": {
+              "mode": "raw",
+              "raw": "{\"tenant_id\":6,\"amount\":15000,\"date\":\"2026-06-19\",\"status\":\"paid\"}"
+            }
+          }
+        }
+      ]
+    },
+    {
+      "name": "7. Notifications",
+      "item": [
+        {
+          "name": "Get Notifications",
+          "request": {
+            "method": "GET",
+            "header": [{"key": "Authorization", "value": "Bearer {{token}}"}],
+            "url": "{{baseUrl}}/notifications/"
+          }
+        }
+      ]
+    }
+  ]
+}
