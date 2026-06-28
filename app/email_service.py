@@ -24,7 +24,7 @@ def send_email(to_email: str, subject: str, html_body: str) -> bool:
     try:
         msg = MIMEMultipart("alternative")
         msg["Subject"] = subject
-        msg["From"]    = f"Property Dekho <{SMTP_EMAIL}>"
+        msg["From"]    = f"Rentpro <{SMTP_EMAIL}>"
         msg["To"]      = to_email
         msg.attach(MIMEText(html_body, "html"))
 
@@ -47,7 +47,7 @@ def send_welcome_email(to_email: str, name: str, role: str):
     html = f"""
     <div style="font-family:Arial,sans-serif;max-width:600px;margin:0 auto;background:#f8fafc;padding:32px;border-radius:16px;">
       <div style="text-align:center;margin-bottom:24px;">
-        <h1 style="color:#4f46e5;font-size:28px;margin:0;">🏠 Property Dekho</h1>
+        <h1 style="color:#4f46e5;font-size:28px;margin:0;">🏠 Rentpro</h1>
       </div>
       <div style="background:white;border-radius:12px;padding:32px;box-shadow:0 2px 8px rgba(0,0,0,0.06);">
         <h2 style="color:#1a202c;margin-top:0;">Welcome, {name}! 🎉</h2>
@@ -56,16 +56,16 @@ def send_welcome_email(to_email: str, name: str, role: str):
         </p>
         <div style="background:#f0fdf4;border-left:4px solid #10b981;padding:16px;border-radius:8px;margin:20px 0;">
           <p style="margin:0;color:#065f46;font-weight:600;">✅ Account Activated</p>
-          <p style="margin:4px 0 0;color:#065f46;font-size:14px;">You can now log in and start using Property Dekho.</p>
+          <p style="margin:4px 0 0;color:#065f46;font-size:14px;">You can now log in and start using Rentpro.</p>
         </div>
         <p style="color:#64748b;font-size:13px;">If you did not create this account, please ignore this email.</p>
       </div>
       <p style="text-align:center;color:#94a3b8;font-size:12px;margin-top:24px;">
-        © 2024 Property Dekho. All rights reserved.
+        © 2024 Rentpro. All rights reserved.
       </p>
     </div>
     """
-    send_email(to_email, "Welcome to Property Dekho! 🏠", html)
+    send_email(to_email, "Welcome to Rentpro! 🏠", html)
 
 
 def send_otp_email(to_email: str, name: str, otp: str, purpose: str = "login"):
@@ -77,7 +77,7 @@ def send_otp_email(to_email: str, name: str, otp: str, purpose: str = "login"):
     html = f"""
     <div style="font-family:Arial,sans-serif;max-width:600px;margin:0 auto;background:#f8fafc;padding:32px;border-radius:16px;">
       <div style="text-align:center;margin-bottom:24px;">
-        <h1 style="color:#4f46e5;font-size:28px;margin:0;">🏠 Property Dekho</h1>
+        <h1 style="color:#4f46e5;font-size:28px;margin:0;">🏠 Rentpro</h1>
       </div>
       <div style="background:white;border-radius:12px;padding:32px;box-shadow:0 2px 8px rgba(0,0,0,0.06);">
         <h2 style="color:#1a202c;margin-top:0;">Your OTP Code 🔐</h2>
@@ -95,11 +95,11 @@ def send_otp_email(to_email: str, name: str, otp: str, purpose: str = "login"):
         </div>
       </div>
       <p style="text-align:center;color:#94a3b8;font-size:12px;margin-top:24px;">
-        © 2024 Property Dekho. All rights reserved.
+        © 2024 Rentpro. All rights reserved.
       </p>
     </div>
     """
-    subject = "Your OTP Code — Property Dekho 🔐"
+    subject = "Your OTP Code — Rentpro 🔐"
     send_email(to_email, subject, html)
 
 
@@ -109,7 +109,7 @@ def send_login_notification(to_email: str, name: str, ip: str = "Unknown"):
     html = f"""
     <div style="font-family:Arial,sans-serif;max-width:600px;margin:0 auto;background:#f8fafc;padding:32px;border-radius:16px;">
       <div style="text-align:center;margin-bottom:24px;">
-        <h1 style="color:#4f46e5;font-size:28px;margin:0;">🏠 Property Dekho</h1>
+        <h1 style="color:#4f46e5;font-size:28px;margin:0;">🏠 Rentpro</h1>
       </div>
       <div style="background:white;border-radius:12px;padding:32px;box-shadow:0 2px 8px rgba(0,0,0,0.06);">
         <h2 style="color:#1a202c;margin-top:0;">New Login Detected 🔔</h2>
@@ -126,18 +126,18 @@ def send_login_notification(to_email: str, name: str, ip: str = "Unknown"):
         </div>
       </div>
       <p style="text-align:center;color:#94a3b8;font-size:12px;margin-top:24px;">
-        © 2024 Property Dekho. All rights reserved.
+        © 2024 Rentpro. All rights reserved.
       </p>
     </div>
     """
-    send_email(to_email, "New Login to Your Account — Property Dekho 🔔", html)
+    send_email(to_email, "New Login to Your Account — Rentpro 🔔", html)
 
 
 def send_failed_attempts_warning(to_email: str, name: str, attempts: int):
     html = f"""
     <div style="font-family:Arial,sans-serif;max-width:600px;margin:0 auto;background:#f8fafc;padding:32px;border-radius:16px;">
       <div style="text-align:center;margin-bottom:24px;">
-        <h1 style="color:#4f46e5;font-size:28px;margin:0;">🏠 Property Dekho</h1>
+        <h1 style="color:#4f46e5;font-size:28px;margin:0;">🏠 Rentpro</h1>
       </div>
       <div style="background:white;border-radius:12px;padding:32px;box-shadow:0 2px 8px rgba(0,0,0,0.06);">
         <h2 style="color:#ef4444;margin-top:0;">⚠️ Multiple Failed Login Attempts</h2>
@@ -154,7 +154,7 @@ def send_failed_attempts_warning(to_email: str, name: str, attempts: int):
         </p>
       </div>
       <p style="text-align:center;color:#94a3b8;font-size:12px;margin-top:24px;">
-        © 2024 Property Dekho. All rights reserved.
+        © 2024 Rentpro. All rights reserved.
       </p>
     </div>
     """

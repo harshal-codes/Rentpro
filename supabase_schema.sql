@@ -1,4 +1,4 @@
--- Property Dekho Database Schema
+-- Rentpro Database Schema
 -- Run this in Supabase SQL Editor
 
 -- Enable UUID extension
